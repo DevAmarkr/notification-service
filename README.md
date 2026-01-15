@@ -64,16 +64,27 @@ Key architectural principles:
 
 ## 📁 Project Structure
 
-src/
-├── notification/
-│ ├── notification.module.ts
-│ ├── notification.controller.ts
-│ ├── notification.service.ts
-│ ├── dto/
-│ └── channels/
-├── common/
-├── config/
-└── main.ts
+```md
+### Folder Responsibilities
+
+- **notification/**  
+  Core notification domain (API, services, channel strategies)
+
+- **dto/**  
+  Request/response contracts with validation rules
+
+- **channels/**  
+  Channel-specific implementations (Email, SMS, Push)
+
+- **common/**  
+  Shared utilities, base classes, guards, interceptors
+
+- **config/**  
+  Environment and application configuration
+
+- **main.ts**  
+  Application entry point
+```
 
 
 ---
