@@ -21,78 +21,120 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Notification Service (Backend System Design Project)
 
-## Project setup
+A **production-grade, event-driven Notification Service** built using **NestJS** to demonstrate real-world backend engineering principles such as modular architecture, asynchronous processing, dependency injection, and extensibility.
 
-```bash
-$ npm install
-```
+This project is intentionally designed to go **beyond CRUD**, focusing on **system design, scalability, and clean architecture** — the kind of backend work expected in serious engineering teams.
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## 🎯 Purpose of This Project
 
-# watch mode
-$ npm run start:dev
+This service is built to:
 
-# production mode
-$ npm run start:prod
-```
+- Strengthen **backend system design skills**
+- Practice **clean, modular architecture** using NestJS
+- Demonstrate **async processing with queues**
+- Showcase how to design **extensible notification systems**
+- Serve as a **portfolio-ready project** for backend interviews
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## 🧠 What This Service Does
 
-# e2e tests
-$ npm run test:e2e
+- Accepts notification requests via API  
+- Processes notifications asynchronously  
+- Supports multiple delivery channels (Email, SMS, Push)  
+- Handles retries and failures gracefully  
+- Designed for easy extension (new channels, providers, consumers)
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## 🏗️ Architecture Overview
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+**Client / Producer Service**  
+⬇️  
+**Notification API (NestJS)**  
+⬇️  
+**Message Queue**  
+⬇️  
+**Notification Workers**  
+⬇️  
+**External Providers (Email / SMS / Push)**
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Key architectural principles:
 
-## Resources
+- **Separation of concerns**
+- **Loose coupling via queues**
+- **Dependency Injection**
+- **Strategy pattern for channels**
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🧩 Tech Stack
 
-## Support
+- **Backend Framework**: NestJS (Node.js + TypeScript)
+- **Architecture**: Modular, event-driven
+- **Queue (Planned)**: Redis + BullMQ
+- **Database (Planned)**: PostgreSQL / MongoDB
+- **Validation**: class-validator
+- **Config Management**: @nestjs/config
+- **Version Control**: Git
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+### Folder Responsibilities
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **notification/**  
+  Core notification domain (API, services, channel strategies)
 
-## License
+- **dto/**  
+  Request/response contracts with validation rules
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- **channels/**  
+  Channel-specific implementations (Email, SMS, Push)
+
+- **common/**  
+  Shared utilities, base classes, guards, interceptors
+
+- **config/**  
+  Environment and application configuration
+
+- **main.ts**  
+  Application entry point
+
+  
+---
+
+## 🚀 Roadmap
+
+- [x] Project setup & architecture
+- [ ] Notification API contracts
+- [ ] Channel strategy implementation
+- [ ] Async queue integration
+- [ ] Retry & failure handling
+- [ ] Persistence & delivery tracking
+- [ ] Observability & logging
+
+---
+
+## 🔍 Why This Project Matters
+
+Most demo projects stop at **sending an email**.  
+This service focuses on **how backend systems actually work in production**:
+
+- Decoupled services
+- Asynchronous workflows
+- Failure-tolerant design
+- Clean boundaries and extensibility
+
+---
+
+## 👨‍💻 Author
+
+Built as a **backend system design learning project** to develop strong fundamentals and showcase real-world engineering thinking.
+
