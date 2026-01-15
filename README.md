@@ -30,15 +30,12 @@ This service is built to:
 
 ## 🏗️ Architecture Overview
 
-Client / Producer Service
-↓
-Notification API (NestJS)
-↓
-Message Queue
-↓
-Notification Workers
-↓
-External Providers (Email / SMS / Push)
+``mermaid
+flowchart TD
+    A[Client / Producer Service] --> B[Notification API (NestJS)]
+    B --> C[Message Queue]
+    C --> D[Notification Workers]
+    D --> E[External Providers<br/>(Email / SMS / Push)]
 
 
 Key architectural principles:
