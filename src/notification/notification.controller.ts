@@ -1,9 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { CreateNotificationDto } from './dto/create-notification.dto';
 
-@Controller('notification')
+@Controller('notifications')
 export class NotificationController {
-  @Get('health')
-  health() {
-    return { status: 'Ok' };
+  @Post()
+  @HttpCode(HttpStatus.ACCEPTED)
+  create(@Body() dto: CreateNotificationDto) {
+    return {
+      notificationId: `notif_${Date.now()}`,
+      status: 'ACCEPTED',
+      data: dto,
+    };
   }
 }
