@@ -1,23 +1,39 @@
-import { IsArray, IsEnum, IsObject, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsEnum,
+  IsObject,
+  IsString,
+  IsOptional,
+} from 'class-validator';
 
 export enum NotificaitonChannel {
   EMAIL = 'email',
   SMS = 'sms',
 }
 
+export enum NotificationPriority {
+  LOW = 'low',
+  NORMAL = 'normal',
+  HIGH = 'high',
+}
+
 export class CreateNotificationDto {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   @IsString()
   eventType: string;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
   @IsString()
   userId: string;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
   @IsArray()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   @IsEnum(NotificaitonChannel, { each: true })
-  channel: NotificaitonChannel;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  channel: NotificaitonChannel[];
+
   @IsObject()
   payload: Record<string, any>;
+
+  @IsOptional()
+  metadata: {
+    priority?: NotificationPriority;
+    source?: string;
+  };
 }
